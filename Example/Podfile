@@ -1,0 +1,13 @@
+use_frameworks!
+
+target 'Braspag_Example' do
+  pod 'Braspag', :path => '../'
+
+  target 'Braspag_Tests' do
+    inherit! :search_paths
+
+    pod 'Specta'
+    pod 'Expecta'
+    pod 'OCMock'
+  end
+end

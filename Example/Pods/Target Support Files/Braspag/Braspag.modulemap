@@ -1,0 +1,6 @@
+framework module Braspag {
+  umbrella header "Braspag-umbrella.h"
+
+  export *
+  module * { export * }
+}

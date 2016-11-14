@@ -1,0 +1,6 @@
+framework module Pods_Braspag_Tests {
+  umbrella header "Pods-Braspag_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
