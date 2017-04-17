@@ -18,7 +18,7 @@
 
 - (void)createSale:(BPSale *)sale success:(BPRequestSuccessBlock)success failure:(BPRequestFailureBlock)failure; {
     NSDictionary *saleParams = [BPJSONAdapter JSONDictionaryFromModel:sale error:nil];
-    [[self apiManager] POST:@"/1/sales"
+    [[self apiManager] POST:@"/v2/sales"
                   parameters:saleParams
                    progress:nil
                     success:[self successBlock:success]
@@ -26,7 +26,7 @@
 }
 
 - (void)querySale:(NSString *)paymentId success:(BPRequestSuccessBlock)success failure:(BPRequestFailureBlock)failure; {
-    [[self apiQueryManager] GET:[NSString stringWithFormat:@"/1/sales/%@", paymentId]
+    [[self apiQueryManager] GET:[NSString stringWithFormat:@"/v2/sales/%@", paymentId]
                      parameters:nil
                        progress:nil
                         success:[self successBlock:success]
@@ -34,14 +34,14 @@
 }
 
 - (void)cancelSale:(NSString *)paymentId withAmount:(int)amount success:(BPRequestSuccessBlock)success failure:(BPRequestFailureBlock)failure {
-    [[self apiManager] PUT:[NSString stringWithFormat:@"/1/sales/%@/void?amount=%i", paymentId, amount]
+    [[self apiManager] PUT:[NSString stringWithFormat:@"/v2/sales/%@/void?amount=%i", paymentId, amount]
                 parameters:nil
                    success:[self successBlock:success]
                    failure:[self failureBlock:failure]];
 }
 
 - (void)cancelSale:(NSString *)paymentId success:(BPRequestSuccessBlock)success failure:(BPRequestFailureBlock)failure; {
-    [[self apiManager] PUT:[NSString stringWithFormat:@"/1/sales/%@/void", paymentId]
+    [[self apiManager] PUT:[NSString stringWithFormat:@"/v2/sales/%@/void", paymentId]
                 parameters:nil
                    success:[self successBlock:success]
                    failure:[self failureBlock:failure]];
@@ -52,7 +52,7 @@
 andServiceTaxAmount:(int)serviceTaxAmount
             success:(BPRequestSuccessBlock)success
             failure:(BPRequestFailureBlock)failure {
-    [[self apiManager] PUT:[NSString stringWithFormat:@"/1/sales/%@/capture?amount=%i&serviceTaxAmount=%i", paymentId, amount, serviceTaxAmount]
+    [[self apiManager] PUT:[NSString stringWithFormat:@"/v2/sales/%@/capture?amount=%i&serviceTaxAmount=%i", paymentId, amount, serviceTaxAmount]
                 parameters:nil
                    success:[self successBlock:success]
                    failure:[self failureBlock:failure]];
@@ -62,14 +62,14 @@ andServiceTaxAmount:(int)serviceTaxAmount
          withAmount:(int)amount
             success:(BPRequestSuccessBlock)success
             failure:(BPRequestFailureBlock)failure {
-    [[self apiManager] PUT:[NSString stringWithFormat:@"/1/sales/%@/capture?amount=%i", paymentId, amount]
+    [[self apiManager] PUT:[NSString stringWithFormat:@"/v2/sales/%@/capture?amount=%i", paymentId, amount]
                 parameters:nil
                    success:[self successBlock:success]
                    failure:[self failureBlock:failure]];
 }
 
 - (void)captureSale:(NSString *)paymentId success:(BPRequestSuccessBlock)success failure:(BPRequestFailureBlock)failure {
-    [[self apiManager] PUT:[NSString stringWithFormat:@"/1/sales/%@/capture", paymentId]
+    [[self apiManager] PUT:[NSString stringWithFormat:@"/v2/sales/%@/capture", paymentId]
                 parameters:nil
                    success:[self successBlock:success]
                    failure:[self failureBlock:failure]];
