@@ -85,6 +85,45 @@
     return [NSValueTransformer mtl_valueMappingTransformerWithDictionary:typeDict];
 }
 
+
+/**
+ Converte uma String para enum (BPPaymentType).
+ 
+ @param value String relacionada ao enum
+ @return String convertida em enum
+ */
++ (BPPaymentType)convertStringToBPPaymentType:(NSString *)value {
+    
+    if ([value isEqualToString:@"CreditCard"]) {
+        return CreditCard;
+    } else if ([value isEqualToString:@"DebitCard"]) {
+        return DebitCard;
+    } else if ([value isEqualToString:@"ElectronicTransfer"]) {
+        return ElectronicTransfer;
+    } else {
+        return Boleto;
+    }
+    
+}
+
+/**
+ Converte uma String para enum (BPPaymentProvider).
+ 
+ @param value String relacionada ao enum
+ @return String convertida em enum
+ */
++ (BPPaymentProvider)convertStringToBPPaymentProvider:(NSString *)value {
+    
+    if ([value isEqualToString:@"Bradesco"]) {
+        return Bradesco;
+    } else if ([value isEqualToString:@"BancoDoBrasil"]) {
+        return BancoDoBrasil;
+    } else {
+        return Simulado;
+    }
+    
+}
+
 + (NSValueTransformer *)currencyJSONTransformer {
     NSDictionary *currencyDict = @{
                                    @"BRL": @(BRL),

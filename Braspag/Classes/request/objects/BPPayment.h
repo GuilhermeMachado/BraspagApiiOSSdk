@@ -69,4 +69,7 @@ typedef enum {
 @property NSString *digitableLine;
 @property NSString *address;
 
++ (BPPaymentType)convertStringToBPPaymentType:(NSString *)value;
++ (BPPaymentProvider)convertStringToBPPaymentProvider:(NSString *)value;
+
 @end
