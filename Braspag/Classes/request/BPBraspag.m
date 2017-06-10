@@ -16,8 +16,8 @@
     return self;
 }
 
-- (void)createSaleWithJSONResponse:(NSDictionary *)dictionary success:(BPRequestJSONSuccessBlock)success failure:(BPRequestFailureBlock)failure; {
-    NSDictionary *saleParams = [BPJSONAdapter JSONDictionaryFromModel:dictionary error:nil];
+- (void)createSaleWithJSONResponse:(BPSale *)sale success:(BPRequestJSONSuccessBlock)success failure:(BPRequestFailureBlock)failure; {
+    NSDictionary *saleParams = [BPJSONAdapter JSONDictionaryFromModel:sale error:nil];
     [[self apiManager] POST:@"/v2/sales"
                  parameters:saleParams
                    progress:nil
