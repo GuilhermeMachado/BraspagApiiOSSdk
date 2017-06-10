@@ -16,10 +16,10 @@
     return self;
 }
 
-- (void)createSaleWithJSONResponse:(NSDictionary *)dictionary success:(BPRequestSuccessBlock)success failure:(BPRequestFailureBlock)failure; {
-    //NSDictionary *saleParams = [BPJSONAdapter JSONDictionaryFromModel:dictionary error:nil];
+- (void)createSaleWithJSONResponse:(NSDictionary *)dictionary success:(BPRequestJSONSuccessBlock)success failure:(BPRequestFailureBlock)failure; {
+    NSDictionary *saleParams = [BPJSONAdapter JSONDictionaryFromModel:dictionary error:nil];
     [[self apiManager] POST:@"/v2/sales"
-                 parameters:nil
+                 parameters:saleParams
                    progress:nil
                     success:[self successJSONBlock:success]
                     failure:[self failureBlock:failure]];
@@ -93,7 +93,7 @@ andServiceTaxAmount:(int)serviceTaxAmount
     };
 }
 
-- (void(^)(NSURLSessionDataTask*, id))successJSONBlock:(BPRequestSuccessBlock)success {
+- (void(^)(NSURLSessionDataTask*, id))successJSONBlock:(BPRequestJSONSuccessBlock)success {
     return ^(NSURLSessionDataTask *task, id responseObject) {
         success(responseObject);
     };

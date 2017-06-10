@@ -4,6 +4,7 @@
 #import "BPEnvironment.h"
 #import "BPSale.h"
 
+typedef void (^BPRequestJSONSuccessBlock) (NSDictionary *dictionary);
 typedef void (^BPRequestSuccessBlock) (BPSale *sale);
 typedef void (^BPRequestFailureBlock) (NSError *error, NSHTTPURLResponse* httpResponse);
 
@@ -15,7 +16,7 @@ typedef void (^BPRequestFailureBlock) (NSError *error, NSHTTPURLResponse* httpRe
 - (id)initWithMerchant:(BPMerchant *)merchant
         andEnvironment:(BPEnvironment *)environment;
 
-- (void)createSaleWithJSONResponse:(NSDictionary *)dictionary success:(BPRequestSuccessBlock)success failure:(BPRequestFailureBlock)failure;
+- (void)createSaleWithJSONResponse:(BPSale *)sale success:(BPRequestJSONSuccessBlock)success failure:(BPRequestFailureBlock)failure;
 
 - (void)createSale:(BPSale *)sale success:(BPRequestSuccessBlock)success failure:(BPRequestFailureBlock)failure;
 
