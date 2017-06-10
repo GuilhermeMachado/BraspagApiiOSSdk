@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.authors          = 'Braspag'
   s.name             = 'Braspag'
-  s.version          = '0.2.0'
+  s.version          = '0.2.1'
   s.summary          = 'SDK de integração com a API da Braspag.'
 
   s.homepage         = 'https://github.com/Braspag/BraspagApiiOSSdk'
