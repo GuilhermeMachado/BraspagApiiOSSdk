@@ -15,6 +15,8 @@ typedef void (^BPRequestFailureBlock) (NSError *error, NSHTTPURLResponse* httpRe
 - (id)initWithMerchant:(BPMerchant *)merchant
         andEnvironment:(BPEnvironment *)environment;
 
+- (void)createSaleWithJSONResponse:(NSDictionary *)dictionary success:(BPRequestSuccessBlock)success failure:(BPRequestFailureBlock)failure;
+
 - (void)createSale:(BPSale *)sale success:(BPRequestSuccessBlock)success failure:(BPRequestFailureBlock)failure;
 
 - (void)querySale:(NSString *)paymentId success:(BPRequestSuccessBlock)success failure:(BPRequestFailureBlock)failure;

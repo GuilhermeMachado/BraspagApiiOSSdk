@@ -16,6 +16,15 @@
     return self;
 }
 
+- (void)createSaleWithJSONResponse:(NSDictionary *)dictionary success:(BPRequestSuccessBlock)success failure:(BPRequestFailureBlock)failure; {
+    //NSDictionary *saleParams = [BPJSONAdapter JSONDictionaryFromModel:dictionary error:nil];
+    [[self apiManager] POST:@"/v2/sales"
+                 parameters:nil
+                   progress:nil
+                    success:[self successJSONBlock:success]
+                    failure:[self failureBlock:failure]];
+}
+
 - (void)createSale:(BPSale *)sale success:(BPRequestSuccessBlock)success failure:(BPRequestFailureBlock)failure; {
     NSDictionary *saleParams = [BPJSONAdapter JSONDictionaryFromModel:sale error:nil];
     [[self apiManager] POST:@"/v2/sales"
@@ -81,6 +90,12 @@ andServiceTaxAmount:(int)serviceTaxAmount
     return ^(NSURLSessionDataTask *task, id responseObject) {
         BPSale *sale = [BPJSONAdapter modelOfClass:BPSale.class fromJSONDictionary:responseObject error:nil];
         success(sale);
+    };
+}
+
+- (void(^)(NSURLSessionDataTask*, id))successJSONBlock:(BPRequestSuccessBlock)success {
+    return ^(NSURLSessionDataTask *task, id responseObject) {
+        success(responseObject);
     };
 }
 
