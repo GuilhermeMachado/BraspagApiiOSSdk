@@ -1,19 +1,16 @@
 {
   "name": "Braspag",
-  "version": "0.1.0",
-  "summary": "A short description of Braspag.",
-  "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/Braspag",
+  "authors": "Braspag",
+  "version": "0.2.0",
+  "summary": "SDK de integração com a API da Braspag.",
+  "homepage": "https://github.com/Braspag/BraspagApiiOSSdk",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
-  "authors": {
-    "Thiago Rodrigues de Paula": "thiago.rdp@gmail.com"
-  },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/Braspag.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/GuilhermeMachado/BraspagApiiOSSdk.git",
+    "tag": "0.2.0"
   },
   "platforms": {
     "ios": "8.0"
